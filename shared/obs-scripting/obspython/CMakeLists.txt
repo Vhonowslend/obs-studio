@@ -59,7 +59,7 @@ target_compile_definitions(
     SWIG_TYPE_TABLE=obspython
     Py_ENABLE_SHARED=1
     SWIG_PYTHON_INTERPRETER_NO_DEBUG
-    $<$<BOOL:${ENABLE_UI}>:ENABLE_UI>
+    $<$<BOOL:${ENABLE_FRONTEND}>:ENABLE_UI>
 )
 
 target_link_libraries(
@@ -68,7 +68,7 @@ target_link_libraries(
     OBS::cstrcache
     OBS::libobs
     OBS::scripting
-    $<$<BOOL:${ENABLE_UI}>:OBS::frontend-api>
+    $<$<BOOL:${ENABLE_FRONTEND}>:OBS::frontend-api>
     $<$<NOT:$<PLATFORM_ID:Darwin>>:Python::Python>
 )
 
@@ -93,7 +93,7 @@ set_property(
       "SWIG_TYPE_TABLE=obspython"
       "Py_ENABLE_SHARED=1"
       "SWIG_PYTHON_INTERPRETER_NO_DEBUG"
-      "$<$<BOOL:${ENABLE_UI}>:ENABLE_UI>"
+      "$<$<BOOL:${ENABLE_FRONTEND}>:ENABLE_UI>"
       "$<$<PLATFORM_ID:Windows>:MS_NO_COREDLL>"
 )
 
